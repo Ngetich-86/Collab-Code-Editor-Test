@@ -1,9 +1,0 @@
-{
-  "/_app": "pages/_app.js",
-  "/api/socket": "pages/api/socket.js",
-  "/_error": "pages/_error.js",
-  "/editor/[roomId]": "pages/editor/[roomId].html",
-  "/": "pages/index.html",
-  "/_document": "pages/_document.js",
-  "/404": "pages/404.html"
-}
