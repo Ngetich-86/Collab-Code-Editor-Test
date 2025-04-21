@@ -138,7 +138,7 @@ export default function EditorPage() {
             socket.off("room-users", handleRoomUsers);
             socket.disconnect();
         };
-    }, [roomId, username, socket]);
+    }, [roomId, username]); // Remove socket from deps as it's stable
 
     const copyRoomId = () => {
         navigator.clipboard.writeText(roomId);

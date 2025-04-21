@@ -33,7 +33,7 @@ export default function EditorPage({ roomId, username }) {
       toast.info(`Users in room: ${users.length}`);
     });
 
-    socket.on("connect_error", (error) => {
+    socket.on("connect_error", () => {  // Remove unused 'error' parameter
       toast.error("Failed to connect to the server");
       setIsLoading(false);
     });
@@ -41,7 +41,7 @@ export default function EditorPage({ roomId, username }) {
     return () => {
       socket.disconnect();
     };
-  }, [roomId, username]);
+  }, [roomId, username, socket]); // Add socket to dependencies
 
   useEffect(() => {
     if (!editorRef.current) {
@@ -76,7 +76,16 @@ export default function EditorPage({ roomId, username }) {
         editorRef.current.dispose();
       }
     };
-  }, []);
+  }, [socket, roomId]); // Add socket and roomId as dependencies
+
+  useEffect(() => {
+    if (socket) {
+      socket.emit('sync-code', {
+        code,
+        roomId
+      });
+    }
+  }, [code, roomId, socket]); // Add socket to dependencies
 
   if (isLoading) {
     return (
