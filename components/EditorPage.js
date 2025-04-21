@@ -100,31 +100,31 @@ export default function EditorPage({ roomId, username }) {
 
   return (
     <div className="flex h-screen bg-gray-50">
-      {/* Sidebar */}
-      <div className="w-64 bg-white border-r border-gray-200 p-4 flex flex-col">
-        <div className="mb-6">
-          <h1 className="text-xl font-bold text-gray-800">Collaborative Editor</h1>
-          <p className="text-sm text-gray-500">Room: {roomId}</p>
+      {/* Responsive Sidebar */}
+      <div className="w-64 md:w-72 lg:w-80 bg-white border-r border-gray-200 p-4 flex flex-col overflow-y-auto">
+        <div className="mb-4 md:mb-6">
+          <h1 className="text-lg md:text-xl font-bold text-gray-800">Collaborative Editor</h1>
+          <p className="text-xs md:text-sm text-gray-500">Room: {roomId}</p>
         </div>
         
-        <div className="flex items-center space-x-3 mb-6">
-          <div className="w-8 h-8 bg-primary-500 rounded-full flex items-center justify-center text-white font-medium">
+        <div className="flex items-center space-x-2 md:space-x-3 mb-4 md:mb-6">
+          <div className="w-6 h-6 md:w-8 md:h-8 bg-primary-500 rounded-full flex items-center justify-center text-white text-sm md:text-base font-medium">
             {username?.[0]?.toUpperCase()}
           </div>
-          <span className="font-medium text-gray-700">{username}</span>
+          <span className="text-sm md:text-base font-medium text-gray-700">{username}</span>
         </div>
 
         <div className="flex-1">
-          <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
+          <h2 className="text-xs md:text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2 md:mb-3">
             Collaborators
           </h2>
-          <div className="space-y-2">
+          <div className="space-y-1.5 md:space-y-2">
             {collaborators.map((user) => (
-              <div key={user.id} className="flex items-center space-x-3">
-                <div className="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center text-primary-600 font-medium">
+              <div key={user.id} className="flex items-center space-x-2 md:space-x-3">
+                <div className="w-6 h-6 md:w-8 md:h-8 bg-primary-100 rounded-full flex items-center justify-center text-primary-600 text-sm md:text-base font-medium">
                   {user.username?.[0]?.toUpperCase()}
                 </div>
-                <span className="text-sm text-gray-700">{user.username}</span>
+                <span className="text-xs md:text-sm text-gray-700">{user.username}</span>
               </div>
             ))}
           </div>
